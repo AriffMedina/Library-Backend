@@ -1,4 +1,3 @@
-
 package mx.edu.tecdesoftware.library_backend.persistence.entity;
 
 import jakarta.persistence.*;
@@ -24,6 +23,11 @@ public class Prestamo {
     @JoinColumn(name = "libro_id", nullable = false)
     private Libro libro;
 
+    // Relación Muchos a Uno apuntando hacia Cliente
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente;
+
     // Constructores vacíos exigidos por JPA
     public Prestamo() {}
 
@@ -39,4 +43,7 @@ public class Prestamo {
 
     public Libro getLibro() { return libro; }
     public void setLibro(Libro libro) { this.libro = libro; }
+
+    public Cliente getCliente() { return cliente; }
+    public void setCliente(Cliente cliente) { this.cliente = cliente; }
 }
